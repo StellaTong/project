@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="opal.dao.HistoricaldataMapper" >
+  <resultMap id="BaseResultMap" type="opal.model.Historicaldata" >
+    <id column="recordid" property="recordid" jdbcType="INTEGER" />
+    <result column="projectid" property="projectid" jdbcType="INTEGER" />
+    <result column="processid" property="processid" jdbcType="INTEGER" />
+    <result column="metricname" property="metricname" jdbcType="VARCHAR" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    recordid, projectid, processid, metricname, value
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ma_historicaldata
+    where recordid = #{recordid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ma_historicaldata
+    where recordid = #{recordid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="opal.model.Historicaldata" >
+    insert into ma_historicaldata (recordid, projectid, processid, 
+      metricname, value)
+    values (#{recordid,jdbcType=INTEGER}, #{projectid,jdbcType=INTEGER}, #{processid,jdbcType=INTEGER}, 
+      #{metricname,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="opal.model.Historicaldata" >
+    insert into ma_historicaldata
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recordid != null" >
+        recordid,
+      </if>
+      <if test="projectid != null" >
+        projectid,
+      </if>
+      <if test="processid != null" >
+        processid,
+      </if>
+      <if test="metricname != null" >
+        metricname,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recordid != null" >
+        #{recordid,jdbcType=INTEGER},
+      </if>
+      <if test="projectid != null" >
+        #{projectid,jdbcType=INTEGER},
+      </if>
+      <if test="processid != null" >
+        #{processid,jdbcType=INTEGER},
+      </if>
+      <if test="metricname != null" >
+        #{metricname,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="opal.model.Historicaldata" >
+    update ma_historicaldata
+    <set >
+      <if test="projectid != null" >
+        projectid = #{projectid,jdbcType=INTEGER},
+      </if>
+      <if test="processid != null" >
+        processid = #{processid,jdbcType=INTEGER},
+      </if>
+      <if test="metricname != null" >
+        metricname = #{metricname,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where recordid = #{recordid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="opal.model.Historicaldata" >
+    update ma_historicaldata
+    set projectid = #{projectid,jdbcType=INTEGER},
+      processid = #{processid,jdbcType=INTEGER},
+      metricname = #{metricname,jdbcType=VARCHAR},
+      value = #{value,jdbcType=VARCHAR}
+    where recordid = #{recordid,jdbcType=INTEGER}
+  </update>
+  <select id="getAll" resultMap="BaseResultMap">
+    SELECT * FROM ma_historicaldata
+  </select>
+
+  <select id="selectByMetricname" resultMap="BaseResultMap">
+    select
+    from ma_historicaldata
+    where metricname = #{metricname,jdbcType=VARCHAR}
+  </select>
+</mapper>

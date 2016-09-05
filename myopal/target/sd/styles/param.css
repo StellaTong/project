@@ -1,0 +1,63 @@
+@CHARSET "UTF-8";
+.form-control{
+	font-size:12px;
+	height:26px;
+	padding:2px 12px;
+}
+.col-sm-3{
+	float:left;
+	width:40%;
+	padding-right:8px;
+	padding-top:5px;
+}
+.col-sm-7{
+	float:left;
+	width:40%;
+}
+.form-group{
+	margin-bottom:10px;
+	float:left;
+	width:53%;
+}
+.title{
+	color: #69BECD;
+	width:100%;
+	font-family: Verdana, Tahoma, 'Trebuchet MS', Sans-serif;
+	font-weight: Bold;
+	font-size: 13px;
+	padding: 8px 0 8px 0px;
+}
+#costDriver .title, #monthlyAvg .title,#ed_costDriver .title{
+	border-top:1px solid #CCCCCC;
+}
+#paramForm .btn-primary{
+	 margin-top:2px;
+}
+.btn-primary{
+	 font-size: 12px;
+	 margin:10px 0px;
+	 padding: 6px 0px;
+	 width: 70px;
+}
+.footer{
+	clear:both;
+}
+
+#devLangEditForm .col-sm-3{
+	width:20%;
+}
+.col-sm-7{
+	float:left;
+	width:50%;
+}
+/* #devLangAddForm{
+	border-top:1px solid #CCCCCC;
+	margin-top:20px;
+}
+ */
+#devLangAddForm .form-group{
+	clear:both;
+}
+.form-horizontal .control-label{
+	text-align:left;
+}

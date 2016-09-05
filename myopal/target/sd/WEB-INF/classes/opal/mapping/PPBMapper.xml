@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="opal.dao.PPBMapper" >
+  <resultMap id="BaseResultMap" type="opal.model.PPB" >
+    <id column="ppbid" property="ppbid" jdbcType="INTEGER" />
+    <result column="ppbname" property="ppbname" jdbcType="VARCHAR" />
+    <result column="metricname" property="metricname" jdbcType="VARCHAR" />
+    <result column="lcl" property="lcl" jdbcType="VARCHAR" />
+    <result column="cl" property="cl" jdbcType="VARCHAR" />
+    <result column="ucl" property="ucl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ppbid, ppbname, metricname, lcl, cl, ucl
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ma_ppb
+    where ppbid = #{ppbid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ma_ppb
+    where ppbid = #{ppbid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="opal.model.PPB" >
+    insert into ma_ppb (ppbid, ppbname, metricname, 
+      lcl, cl, ucl)
+    values (#{ppbid,jdbcType=INTEGER}, #{ppbname,jdbcType=VARCHAR}, #{metricname,jdbcType=VARCHAR}, 
+      #{lcl,jdbcType=VARCHAR}, #{cl,jdbcType=VARCHAR}, #{ucl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="opal.model.PPB" >
+    insert into ma_ppb
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ppbid != null" >
+        ppbid,
+      </if>
+      <if test="ppbname != null" >
+        ppbname,
+      </if>
+      <if test="metricname != null" >
+        metricname,
+      </if>
+      <if test="lcl != null" >
+        lcl,
+      </if>
+      <if test="cl != null" >
+        cl,
+      </if>
+      <if test="ucl != null" >
+        ucl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ppbid != null" >
+        #{ppbid,jdbcType=INTEGER},
+      </if>
+      <if test="ppbname != null" >
+        #{ppbname,jdbcType=VARCHAR},
+      </if>
+      <if test="metricname != null" >
+        #{metricname,jdbcType=VARCHAR},
+      </if>
+      <if test="lcl != null" >
+        #{lcl,jdbcType=VARCHAR},
+      </if>
+      <if test="cl != null" >
+        #{cl,jdbcType=VARCHAR},
+      </if>
+      <if test="ucl != null" >
+        #{ucl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="opal.model.PPB" >
+    update ma_ppb
+    <set >
+      <if test="ppbname != null" >
+        ppbname = #{ppbname,jdbcType=VARCHAR},
+      </if>
+      <if test="metricname != null" >
+        metricname = #{metricname,jdbcType=VARCHAR},
+      </if>
+      <if test="lcl != null" >
+        lcl = #{lcl,jdbcType=VARCHAR},
+      </if>
+      <if test="cl != null" >
+        cl = #{cl,jdbcType=VARCHAR},
+      </if>
+      <if test="ucl != null" >
+        ucl = #{ucl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ppbid = #{ppbid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="opal.model.PPB" >
+    update ma_ppb
+    set ppbname = #{ppbname,jdbcType=VARCHAR},
+      metricname = #{metricname,jdbcType=VARCHAR},
+      lcl = #{lcl,jdbcType=VARCHAR},
+      cl = #{cl,jdbcType=VARCHAR},
+      ucl = #{ucl,jdbcType=VARCHAR}
+    where ppbid = #{ppbid,jdbcType=INTEGER}
+  </update>
+  <select id="getAll" resultMap="BaseResultMap">
+    SELECT * FROM ma_ppb
+  </select>
+</mapper>

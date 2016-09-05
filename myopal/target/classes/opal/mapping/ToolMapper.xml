@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="opal.dao.ToolMapper" >
+  <resultMap id="BaseResultMap" type="opal.model.Tool" >
+    <id column="toolid" property="toolid" jdbcType="INTEGER" />
+    <result column="processid" property="processid" jdbcType="INTEGER" />
+    <result column="toolname" property="toolname" jdbcType="VARCHAR" />
+    <result column="tooldes" property="tooldes" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    toolid, processid, toolname, tooldes, url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from doc_tool
+    where toolid = #{toolid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from doc_tool
+    where toolid = #{toolid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="opal.model.Tool" >
+    insert into doc_tool (toolid, processid, toolname, 
+      tooldes, url)
+    values (#{toolid,jdbcType=INTEGER}, #{processid,jdbcType=INTEGER}, #{toolname,jdbcType=VARCHAR}, 
+      #{tooldes,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="opal.model.Tool" >
+    insert into doc_tool
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="toolid != null" >
+        toolid,
+      </if>
+      <if test="processid != null" >
+        processid,
+      </if>
+      <if test="toolname != null" >
+        toolname,
+      </if>
+      <if test="tooldes != null" >
+        tooldes,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="toolid != null" >
+        #{toolid,jdbcType=INTEGER},
+      </if>
+      <if test="processid != null" >
+        #{processid,jdbcType=INTEGER},
+      </if>
+      <if test="toolname != null" >
+        #{toolname,jdbcType=VARCHAR},
+      </if>
+      <if test="tooldes != null" >
+        #{tooldes,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="opal.model.Tool" >
+    update doc_tool
+    <set >
+      <if test="processid != null" >
+        processid = #{processid,jdbcType=INTEGER},
+      </if>
+      <if test="toolname != null" >
+        toolname = #{toolname,jdbcType=VARCHAR},
+      </if>
+      <if test="tooldes != null" >
+        tooldes = #{tooldes,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where toolid = #{toolid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="opal.model.Tool" >
+    update doc_tool
+    set processid = #{processid,jdbcType=INTEGER},
+      toolname = #{toolname,jdbcType=VARCHAR},
+      tooldes = #{tooldes,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR}
+    where toolid = #{toolid,jdbcType=INTEGER}
+  </update>
+  <select id="getAll" resultMap="BaseResultMap">
+    SELECT * FROM doc_tool
+  </select>
+</mapper>

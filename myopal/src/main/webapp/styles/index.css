@@ -1,0 +1,314 @@
+/* Top Elements */
+* { margin: 0; padding: 0; outline: 0; }
+
+body {
+	background: #FFF;
+	font: 12px/1.6em Georgia, "Times New Roman", "Microsoft YaHei";
+	color: #555;
+	text-align: center;
+}
+/* links */
+a:link, a:visited {
+	background: inherit;
+	text-decoration: none;
+	color: #4493A1;
+}
+a:hover {
+	background: inherit;
+	color: #996800;
+}
+/* headers */
+h1, h2{
+	font-family: Verdana, Tahoma, 'Trebuchet MS', Sans-serif;
+	font-weight: Bold; 		
+}
+h1 { font-size: 130%; }
+h2 { font-size: 120%; text-transform: uppercase; }
+
+p {
+padding: 5px 12px 10px 12px;
+}
+#footer > p {
+padding: 15px 12px 10px 12px;
+}
+h1, h2{
+    padding: 15px 12px;
+}
+
+ul, ol {
+	margin: 10px 20px;
+	padding: 0 20px;
+}
+
+/* search form */
+form.search {
+	padding: 0; margin: 0; 
+	vertical-align: bottom;
+	border: none;
+	background-color: transparent;
+}
+form.search input.textbox { 
+	margin: 0; padding: 1px;
+	width: 120px;
+	border: 1px solid #CCC; 
+	background: #FFF;
+	color: #333; 
+}
+form.search input.button {
+	height: 25px;
+	padding: 1px 3px;
+	width: 60px;
+}
+
+hr{
+	border-top:1px solid #B7B8BC;
+}
+
+/* -----------------------------------------
+   LAYOUT
+-------------------------------------------- */
+#wrap {
+	width: 1020px;
+	background: url(../img/bg_index.jpg) repeat-y center top;
+	margin: 0 auto;
+	text-align: left;
+	position:relative;
+}
+#content-wrap {
+	position: relative;
+	width: 72%;
+	margin: 0 auto;
+	padding: 0;	
+	margin-left:230px;
+}
+/* header */
+#header {
+	position: relative;
+	width: 1020px;
+	height: 100px;
+	background: #FFF url(../img/header.jpg) no-repeat center top;
+	margin: 0; padding: 0;
+	font-size: 14px;
+	color: #FFF;
+}
+#header h1#logo {
+	position: absolute;
+	margin: 0; padding: 0;
+	font: bold 40px Georgia, "Times New Roman", 
+             "Microsoft YaHei";
+	letter-spacing: 1px;
+	color: #FFF;
+	text-transform: none;
+	
+	/* change the values of top and Left to adjust the position of the logo*/
+	top: 22px; left: 53px;
+}
+#header h2#slogan {
+	position: absolute;
+	z-index: 100;
+	margin: 0; padding: 0;
+	font: bold 12px 'Trebuchet MS', Arial, Sans-serif;
+	text-transform: none;
+	color: #FFF;
+	
+	/* change the values of top and Left to adjust the position of the slogan*/
+	top: 75px; left:75px;			
+}
+#header #searchform {
+	float: right;
+	padding: 35px 40px 0 0;
+	display: inline;
+}
+/* menu */
+#menu {
+	clear: both;
+	width: 1020px;
+	height: 30px;
+	background: #FFF url(../img/menubg.jpg) repeat-y;
+	margin: 0;
+	font: bolder 12px/30px 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
+}
+#menu #login-info{
+	float:right;
+	padding-right:50px;
+}
+#menu ul{
+	margin: 0; padding: 0 0 0 250px;
+}
+#menu ul li {
+	float: left;
+	list-style: none;
+}
+
+#menu ul li：hoover a {
+	color:#fff;
+	background: #afd9ee;
+}
+
+#menu ul li ul{
+	display: none;
+}
+
+#menu ul li:hover ul {
+	display: block;
+	position: absolute;
+	top:30px;
+	left:0;
+	width:50px;
+}
+#menu ul li:hover a {
+	display: block;
+	background: #CCCCCC;
+	color:#e0e0e0;
+}
+#menu ul li:hover ul li a:hover{
+	background: #CCCCCC;
+	color:#e0e0e0;
+}
+
+#menu ul li a {
+	display: block;
+	text-decoration: none;
+	padding: 0 10px;
+	background: inherit;
+	color: #FFF;
+}
+#menu ul li a:hover {
+   background: #FFF;
+	color: #333;
+}
+
+/* Main */
+#main {
+	float: right;
+	width: 78%;
+	padding: 0;
+    margin: 10px 0 0 0;
+}
+
+/* sidebar */
+#sidebar {
+  left: 50px;
+  width: 15%;
+  position: absolute;
+}	
+#sidebar h1 {
+	margin: 10px 0 0 0; 
+	padding: 5px 10px;
+	font: bold 1.1em 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
+	color: #FFF;	
+	background: #B6B8BB;	
+}
+#sidebar ul.sidemenu {
+	list-style: none;
+	text-align: left;
+	margin: 3px 0px 8px 0; padding: 0;
+	text-decoration: none;
+    font-size: 14px;
+}
+#sidebar ul.sidemenu li {
+	border-bottom: 1px solid #EFF0F1;
+	background: url(../img/bullet.gif) no-repeat 2px 5px ;
+	padding: 3px 0 3px 25px;
+	margin: 0 2px;			 
+}
+
+#sidebar ul.sidemenu li {
+	border-bottom: 1px solid #EFF0F1;
+	background: url(../img/bullet.gif) no-repeat 2px 5px ;
+	padding: 3px 0 3px 25px;
+	margin: 0 2px;
+}
+#sidebar ul.sidemenu li:hover>a, #sidebar a:hover { background-position:left -364px; }
+#sidebar>ul.sidemenu>li:hover>a span, #sidebar a:hover span { background-position:right -184px; }
+
+
+/* just for cosmic method */
+#sidebar ul.sidemenu li.category{
+	background:none;
+	font-weight:bold;
+	font-size:15px;
+	color:rgb(34, 127, 152);
+	padding:10px 0px 3px 10px;
+}
+/* just for cosmic method */
+#sidebar ul.sidemenu li.nav-parent{
+	position: relative;
+}
+#sidebar ul.sidemenu li.nav-parent a{
+	cursor: pointer;
+}
+#sidebar ul.sidemenu li.nav-parent a:after{
+	font-family: 'FontAwesome';
+	content: '\f107';
+	font-size: 16px;
+	font-size: 1.6rem;
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 14px 25px;
+}
+
+#sidebar ul.sidemenu li.nav-parent.nav-expanded a:after{
+	content: '\f106';
+}
+#sidebar ul.sidemenu li.nav-parent.nav-expanded ul.nav-children{
+	display: block;
+}
+#sidebar ul.sidemenu li.nav-children {
+	background: #2C8E86;
+	box-shadow: none;
+	display: none;
+	padding: 10px 0;
+}
+#sidebar ul.sidemenu li.nav-children li a {
+	padding: 9px 15px 9px 70px;
+}
+#sidebar ul.sidemenu li.nav-children li a:hover,
+.sidebar ul.nav.nav-sidebar li .nav-children li a:focus {
+	background: none;
+}
+#sidebar ul.sidemenu li.nav-children li a {
+	color: #C1ECE8;
+}
+#sidebar ul.sidemenu li.nav-children li.active  a {
+	color: #ffffff;
+}
+
+
+
+#sidebar ul.sidemenu li.submenu{
+	padding-left:35px;
+	background: url(../img/bullet.gif) no-repeat 5px 5px ;
+}
+
+* html body #sidebar ul.sidemenu li { height: 1%; }
+
+#sidebar ul.sidemenu a:link,
+#sidebar ul.sidemenu a:visited {
+	font-weight: bold;
+	padding: 2px 0; 		
+	background: none;
+    color: #69BECD;
+}
+#sidebar ul.sidemenu a:hover {
+    color: #555;
+}
+
+/* footer */
+#footer {
+	clear: both;
+	color: #66737B;
+	font: normal 90% 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
+	background: #FFF url(../img/footerbg.jpg) no-repeat center top;	
+	width: 1020px;
+	height: 60px;
+	text-align: center;
+	padding: 5px 0 3px 0;
+	margin: 0 auto;
+	margin-top:-20px;
+	bottom:0px;
+}
+#footer a { text-decoration: none; }
+
+

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="myopal:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="sd.war">
+      <element id="artifact" artifact-name="myopal:war exploded" />
+    </root>
+  </artifact>
+</component>
