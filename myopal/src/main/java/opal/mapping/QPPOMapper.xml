@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="opal.dao.QPPOMapper" >
+  <resultMap id="BaseResultMap" type="opal.model.QPPO" >
+    <id column="qppoid" property="qppoid" jdbcType="INTEGER" />
+    <result column="coid" property="coid" jdbcType="INTEGER" />
+    <result column="qpponame" property="qpponame" jdbcType="VARCHAR" />
+    <result column="qdes" property="qdes" jdbcType="VARCHAR" />
+    <result column="qmethod" property="qmethod" jdbcType="VARCHAR" />
+    <result column="ppmId" property="ppmid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    qppoid, coid, qpponame, qdes, qmethod, ppmId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ma_qppo
+    where qppoid = #{qppoid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ma_qppo
+    where qppoid = #{qppoid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="opal.model.QPPO" >
+    insert into ma_qppo (qppoid, coid, qpponame, 
+      qdes, qmethod, ppmId
+      )
+    values (#{qppoid,jdbcType=INTEGER}, #{coid,jdbcType=INTEGER}, #{qpponame,jdbcType=VARCHAR}, 
+      #{qdes,jdbcType=VARCHAR}, #{qmethod,jdbcType=VARCHAR}, #{ppmid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="opal.model.QPPO" >
+    insert into ma_qppo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qppoid != null" >
+        qppoid,
+      </if>
+      <if test="coid != null" >
+        coid,
+      </if>
+      <if test="qpponame != null" >
+        qpponame,
+      </if>
+      <if test="qdes != null" >
+        qdes,
+      </if>
+      <if test="qmethod != null" >
+        qmethod,
+      </if>
+      <if test="ppmid != null" >
+        ppmId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qppoid != null" >
+        #{qppoid,jdbcType=INTEGER},
+      </if>
+      <if test="coid != null" >
+        #{coid,jdbcType=INTEGER},
+      </if>
+      <if test="qpponame != null" >
+        #{qpponame,jdbcType=VARCHAR},
+      </if>
+      <if test="qdes != null" >
+        #{qdes,jdbcType=VARCHAR},
+      </if>
+      <if test="qmethod != null" >
+        #{qmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="ppmid != null" >
+        #{ppmid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="opal.model.QPPO" >
+    update ma_qppo
+    <set >
+      <if test="coid != null" >
+        coid = #{coid,jdbcType=INTEGER},
+      </if>
+      <if test="qpponame != null" >
+        qpponame = #{qpponame,jdbcType=VARCHAR},
+      </if>
+      <if test="qdes != null" >
+        qdes = #{qdes,jdbcType=VARCHAR},
+      </if>
+      <if test="qmethod != null" >
+        qmethod = #{qmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="ppmid != null" >
+        ppmId = #{ppmid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where qppoid = #{qppoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="opal.model.QPPO" >
+    update ma_qppo
+    set coid = #{coid,jdbcType=INTEGER},
+      qpponame = #{qpponame,jdbcType=VARCHAR},
+      qdes = #{qdes,jdbcType=VARCHAR},
+      qmethod = #{qmethod,jdbcType=VARCHAR},
+      ppmId = #{ppmid,jdbcType=INTEGER}
+    where qppoid = #{qppoid,jdbcType=INTEGER}
+  </update>
+</mapper>

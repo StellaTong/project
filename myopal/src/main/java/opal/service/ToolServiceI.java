@@ -23,4 +23,6 @@ public interface ToolServiceI {
 
     //更新工具信息
     public int updateTool(Tool tool);
+
+    public void  opentool(String toolurl);
 }

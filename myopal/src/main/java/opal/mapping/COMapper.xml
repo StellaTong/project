@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="opal.dao.COMapper" >
+  <resultMap id="BaseResultMap" type="opal.model.CO" >
+    <id column="coid" property="coid" jdbcType="INTEGER" />
+    <result column="dboid" property="dboid" jdbcType="INTEGER" />
+    <result column="coname" property="coname" jdbcType="VARCHAR" />
+    <result column="codes" property="codes" jdbcType="VARCHAR" />
+    <result column="ppmid" property="ppmid" jdbcType="INTEGER" />
+    <result column="comed" property="comed" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    coid, dboid, coname, codes, ppmid, comed
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ma_co
+    where coid = #{coid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ma_co
+    where coid = #{coid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="opal.model.CO" >
+    insert into ma_co (coid, dboid, coname, 
+      codes, ppmid, comed
+      )
+    values (#{coid,jdbcType=INTEGER}, #{dboid,jdbcType=INTEGER}, #{coname,jdbcType=VARCHAR}, 
+      #{codes,jdbcType=VARCHAR}, #{ppmid,jdbcType=INTEGER}, #{comed,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="opal.model.CO" >
+    insert into ma_co
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="coid != null" >
+        coid,
+      </if>
+      <if test="dboid != null" >
+        dboid,
+      </if>
+      <if test="coname != null" >
+        coname,
+      </if>
+      <if test="codes != null" >
+        codes,
+      </if>
+      <if test="ppmid != null" >
+        ppmid,
+      </if>
+      <if test="comed != null" >
+        comed,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="coid != null" >
+        #{coid,jdbcType=INTEGER},
+      </if>
+      <if test="dboid != null" >
+        #{dboid,jdbcType=INTEGER},
+      </if>
+      <if test="coname != null" >
+        #{coname,jdbcType=VARCHAR},
+      </if>
+      <if test="codes != null" >
+        #{codes,jdbcType=VARCHAR},
+      </if>
+      <if test="ppmid != null" >
+        #{ppmid,jdbcType=INTEGER},
+      </if>
+      <if test="comed != null" >
+        #{comed,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="opal.model.CO" >
+    update ma_co
+    <set >
+      <if test="dboid != null" >
+        dboid = #{dboid,jdbcType=INTEGER},
+      </if>
+      <if test="coname != null" >
+        coname = #{coname,jdbcType=VARCHAR},
+      </if>
+      <if test="codes != null" >
+        codes = #{codes,jdbcType=VARCHAR},
+      </if>
+      <if test="ppmid != null" >
+        ppmid = #{ppmid,jdbcType=INTEGER},
+      </if>
+      <if test="comed != null" >
+        comed = #{comed,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where coid = #{coid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="opal.model.CO" >
+    update ma_co
+    set dboid = #{dboid,jdbcType=INTEGER},
+      coname = #{coname,jdbcType=VARCHAR},
+      codes = #{codes,jdbcType=VARCHAR},
+      ppmid = #{ppmid,jdbcType=INTEGER},
+      comed = #{comed,jdbcType=VARCHAR}
+    where coid = #{coid,jdbcType=INTEGER}
+  </update>
+</mapper>

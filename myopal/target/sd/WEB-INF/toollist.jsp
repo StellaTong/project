@@ -12,11 +12,11 @@
         <script type="text/javascript" src="<%=path %>/scripts/jquery-2.1.4.js"></script>
 
     <div id="content-wrap">
-       <div id="userList">
-        <h3>工具列表</h3>
-           <a id="tooladd"  href="/myopal/tool/empty" role="button"
+       <div id="orgintoolList">
+        <h3>远程工具列表</h3>
+           <a id="orgintooladd"  href="/myopal/tool/empty" role="button"
               data-toggle="modal" data-target="#toolEditModal"><span class="glyphicon glyphicon-plus-sign"></span></a>
-           <table class="table table-bordered" id="tooltable">
+           <table class="table table-bordered" id="orgintooltable" >
             <thead>
             <tr>
                 <th>工具Id</th>
@@ -26,7 +26,6 @@
                 <th>删除</th>
                 <th>参数设置</th>
                 <th>转到</th>
-                <th>打开本地工具</th>
 
             </tr>
             </thead>
@@ -46,9 +45,6 @@
                     <td><a href="/myopal/tool/var/${tool.toolid}" type="button" data-toggle="modal" data-target="#toolEditModal">
                         <span class="glyphicon glyphicon-tag"></span>
                     </a></td>
-                    <td><a href="/myopal/tool/search/${tool.toolid}">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </a></td>
                     <td><a href="/myopal/tool/opensoftware/${tool.toolid}">
                         <span class="glyphicon glyphicon-search"></span>
                     </a></td>
@@ -59,7 +55,7 @@
         </table>
       </div>
     </div>
-    </div>
+</div>
         <!-- Modal for user register -->
 <!-- Modal for user register -->
 <!-- Modal for create project-->

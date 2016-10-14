@@ -5,6 +5,7 @@ import opal.model.Tool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -57,5 +58,13 @@ public class ToolServiceImpl implements ToolServiceI {
         return toolMapper.updateByPrimaryKey(tool);
     }
 
+    @Override
+    public void  opentool(String toolurl){
 
+        try{
+            Runtime.getRuntime().exec(toolurl);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

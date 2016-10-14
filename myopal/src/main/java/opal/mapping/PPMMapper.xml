@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="opal.dao.PPMMapper" >
+  <resultMap id="BaseResultMap" type="opal.model.PPM" >
+    <id column="ppmid" property="ppmid" jdbcType="INTEGER" />
+    <result column="ppmdes" property="ppmdes" jdbcType="VARCHAR" />
+    <result column="ppmexp" property="ppmexp" jdbcType="VARCHAR" />
+    <result column="processid" property="processid" jdbcType="INTEGER" />
+    <result column="metricname" property="metricname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ppmid, ppmdes, ppmexp, processid, metricname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ma_ppm
+    where ppmid = #{ppmid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ma_ppm
+    where ppmid = #{ppmid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="opal.model.PPM" >
+    insert into ma_ppm (ppmid, ppmdes, ppmexp, 
+      processid, metricname)
+    values (#{ppmid,jdbcType=INTEGER}, #{ppmdes,jdbcType=VARCHAR}, #{ppmexp,jdbcType=VARCHAR}, 
+      #{processid,jdbcType=INTEGER}, #{metricname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="opal.model.PPM" >
+    insert into ma_ppm
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ppmid != null" >
+        ppmid,
+      </if>
+      <if test="ppmdes != null" >
+        ppmdes,
+      </if>
+      <if test="ppmexp != null" >
+        ppmexp,
+      </if>
+      <if test="processid != null" >
+        processid,
+      </if>
+      <if test="metricname != null" >
+        metricname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ppmid != null" >
+        #{ppmid,jdbcType=INTEGER},
+      </if>
+      <if test="ppmdes != null" >
+        #{ppmdes,jdbcType=VARCHAR},
+      </if>
+      <if test="ppmexp != null" >
+        #{ppmexp,jdbcType=VARCHAR},
+      </if>
+      <if test="processid != null" >
+        #{processid,jdbcType=INTEGER},
+      </if>
+      <if test="metricname != null" >
+        #{metricname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="opal.model.PPM" >
+    update ma_ppm
+    <set >
+      <if test="ppmdes != null" >
+        ppmdes = #{ppmdes,jdbcType=VARCHAR},
+      </if>
+      <if test="ppmexp != null" >
+        ppmexp = #{ppmexp,jdbcType=VARCHAR},
+      </if>
+      <if test="processid != null" >
+        processid = #{processid,jdbcType=INTEGER},
+      </if>
+      <if test="metricname != null" >
+        metricname = #{metricname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ppmid = #{ppmid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="opal.model.PPM" >
+    update ma_ppm
+    set ppmdes = #{ppmdes,jdbcType=VARCHAR},
+      ppmexp = #{ppmexp,jdbcType=VARCHAR},
+      processid = #{processid,jdbcType=INTEGER},
+      metricname = #{metricname,jdbcType=VARCHAR}
+    where ppmid = #{ppmid,jdbcType=INTEGER}
+  </update>
+</mapper>

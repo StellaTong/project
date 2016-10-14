@@ -1,8 +1,7 @@
 package opal.controller;
 
-import opal.service.ToolServiceI;
 import opal.model.Tool;
-import org.apache.http.HttpResponse;
+import opal.service.ToolServiceI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,8 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -120,43 +117,29 @@ public class ToolController {
         return tooldes+"var";
     }
 
-    //打开web工具
-    @RequestMapping("/search/{toolid}")
-    public ModelAndView search(@PathVariable Integer toolid, Model model, HttpServletRequest request){
+    //打开本地工具
+    @RequestMapping("/opensoftware/{toolid}")
+    @ResponseBody
+    public ModelAndView opensoftware(@PathVariable Integer toolid, Model model, HttpServletRequest request){
         Tool tool = toolService.getToolById(toolid);
         ModelAndView view = new ModelAndView();
         String toolurl;
         toolurl=tool.getUrl();
         System.out.println(toolurl);
-        view.setViewName("redirect:"+toolurl);
+        if (toolurl.contains("http")){
+            view.setViewName("redirect:"+toolurl);
+        }
+        else{
+            view.setViewName("redirect:http://localhost:8080/myopal/tool/list");
+            toolService.opentool(toolurl);
+        }
         return view;
-    }
-
-    //打开本地工具
-    @RequestMapping("/opensoftware/{toolid}")
-    @ResponseBody
-    public void opensoftware(@PathVariable Integer toolid, Model model, HttpServletRequest request){
-        Tool tool = toolService.getToolById(toolid);
-        String toolurl;
-        toolurl=tool.getUrl();
-        System.out.println(toolurl);
-        Runtime rn = Runtime.getRuntime().getRuntime();
-        System.out.println(rn);
-        Process p = null;
-        try{
-            p=rn.exec("cmd /c"+toolurl);
-        }
-        catch (IOException ex){
-            System.out.println(ex);
-        }
     }
 
     //返回参数到工具
     @RequestMapping(value = "/addvartool", method = RequestMethod.POST)
     @ResponseBody
     public void varedit(String xmrname,String orgid,String proid,String xname,String yname, String metricname,Model model, HttpServletRequest request){
-
-
         System.setProperty("webdriver.firefox.bin", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
         WebDriver driver = new FirefoxDriver();
         driver.get("renah.buaa.edu.cn:8080/qpmtools/#/spc/create/XmR");

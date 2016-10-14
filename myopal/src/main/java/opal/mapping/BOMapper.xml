@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="opal.dao.BOMapper" >
+  <resultMap id="BaseResultMap" type="opal.model.BO" >
+    <id column="boid" property="boid" jdbcType="INTEGER" />
+    <result column="boname" property="boname" jdbcType="VARCHAR" />
+    <result column="botime" property="botime" jdbcType="TIMESTAMP" />
+    <result column="bmethod" property="bmethod" jdbcType="VARCHAR" />
+    <result column="bdes" property="bdes" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    boid, boname, botime, bmethod, bdes
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ma_bo
+    where boid = #{boid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ma_bo
+    where boid = #{boid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="opal.model.BO" >
+    insert into ma_bo (boid, boname, botime, 
+      bmethod, bdes)
+    values (#{boid,jdbcType=INTEGER}, #{boname,jdbcType=VARCHAR}, #{botime,jdbcType=TIMESTAMP}, 
+      #{bmethod,jdbcType=VARCHAR}, #{bdes,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="opal.model.BO" >
+    insert into ma_bo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="boid != null" >
+        boid,
+      </if>
+      <if test="boname != null" >
+        boname,
+      </if>
+      <if test="botime != null" >
+        botime,
+      </if>
+      <if test="bmethod != null" >
+        bmethod,
+      </if>
+      <if test="bdes != null" >
+        bdes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="boid != null" >
+        #{boid,jdbcType=INTEGER},
+      </if>
+      <if test="boname != null" >
+        #{boname,jdbcType=VARCHAR},
+      </if>
+      <if test="botime != null" >
+        #{botime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bmethod != null" >
+        #{bmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="bdes != null" >
+        #{bdes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="opal.model.BO" >
+    update ma_bo
+    <set >
+      <if test="boname != null" >
+        boname = #{boname,jdbcType=VARCHAR},
+      </if>
+      <if test="botime != null" >
+        botime = #{botime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bmethod != null" >
+        bmethod = #{bmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="bdes != null" >
+        bdes = #{bdes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where boid = #{boid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="opal.model.BO" >
+    update ma_bo
+    set boname = #{boname,jdbcType=VARCHAR},
+      botime = #{botime,jdbcType=TIMESTAMP},
+      bmethod = #{bmethod,jdbcType=VARCHAR},
+      bdes = #{bdes,jdbcType=VARCHAR}
+    where boid = #{boid,jdbcType=INTEGER}
+  </update>
+</mapper>
